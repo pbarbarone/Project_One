@@ -1,6 +1,4 @@
-
-// (function(){
-// }())
+var typeStage = document.querySelector(".typed-words");
 
 
 (function(){
@@ -26,7 +24,8 @@ function wordToArray(str){
         span.id="span"+i.toString();
   			span.innerHTML = alphaArray[i];
   			console.log(span);
-        // jquery selector container div, append spans, add 
+        typeStage.appendChild(span);
+
 }
 	return alphaArray;
 }
@@ -34,13 +33,27 @@ function wordToArray(str){
 // so far adds event listener to key of corresponding unicode
 function checkLetter (resultArray){
 	for (let i = 0; i < resultArray.length; i ++){
-	document.addEventListener("keypress", function(event) {
+	 document.addEventListener("keypress", function(event) {
+    console.log("first click");
+    console.log(i);
 
-     if (event.keyCode == resultArray[i]) {
-         console.log('correct key value is' + event.keyCode);
-     }
-})
-}
+    ///write logic above this conditional that makes the b turn gree
+    if(i>0){
+      ///inside of this conditional write logic that makes all subsequent
+      ///things turn green by checking if previous thing has turned green
+      if (event.keyCode == resultArray[i]) {
+      console.log('correct key value is' + event.keyCode);
+      var currentSpan = document.getElementById("span"+i);
+      var previousSpan = document.getElementById("span"+i-1);
+        console.log(previousSpan);
+        if(previousSpan.classList.contains("typed-span") == false){
+            console.log(currentSpan);
+            currentSpan.classList.add("typed-span")
+        }
+       } 
+    }
+    });
+  }
 }
 
 // test input, to be changed

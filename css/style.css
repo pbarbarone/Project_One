@@ -2,9 +2,19 @@ body {
 text-align: center;
  }
 
+ span {
+ 	font-size:55px;
+ 	background-color: white;
+ }
+
+ .typed-span{
+ 	background-color: green;
+ }
+
  .typed-words {
  	height: 85px;
  	width: 400px;
  	background: olive;
  	display: inline-block;
  }
+
