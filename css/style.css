@@ -1,0 +1,10 @@
+body { 
+text-align: center;
+ }
+
+ .typed-words {
+ 	height: 85px;
+ 	width: 400px;
+ 	background: olive;
+ 	display: inline-block;
+ }
