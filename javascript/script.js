@@ -1,73 +1,107 @@
-var typeStage = document.querySelector(".typed-words");
+var typeStage = document.getElementById("type-stage");
+var currentSpan = 0;
+var vocabulary = ["banana","boxer","beautiful","blastoff","bountiful","badger","basketball"];
+var startButton = document.getElementById("start-button");
+var alphaArray = "";
+var countdownContainer = document.getElementById("countdown");
+var keystrokeCount = 0;
+var keystrokeContainer = document.getElementById("keystrokes");
+var vocabOptions = document.getElementById("vocabOptions");
+var timerCount = 3;
 
+vocabOptions.addEventListener("click", openGame);
+startButton.addEventListener("click", startButtonClick);
 
-(function(){
+function openGame() {
+  document.getElementById('body').classList.remove('init');
+};
 
+function startButtonClick(){
+  startButton.removeEventListener("click", startButtonClick);
+  alphaArray = wordToArray(getFromVocab());
 
-// splits string into array of unicode values
-function stringToUni(str) {
-  var resultArray = [];
-  for (var i = 0; i < str.length; i++) {
-    resultArray[i] = str.charCodeAt(i);
+  // adds global key stroke listeners on page load. no need for unicode conversions!
+  // if (timerCount > 0 === true){
+  document.onkeypress = function(e){
+    e = e || window.event;
+    checkKey(e.key);
+   };
+    timerStart();
   }
+// };
 
-  return resultArray;
+function gameStop(){
+  alert("game end");
+      document.getElementById("type-stage").innerHTML="";
+
 }
 
-//  attempting to create individual spans on page for each letter in input
-function wordToArray(str){
-	var alphaArray = str.split('');
+function timerStart (){
+  // var timerCount = 3;
 
-	for (var i = 0; i <alphaArray.length; i++){
-  	var span = document.createElement("span");
-  			span.classList.add("span");
+  //TODO: look up how to make self closing setInterval or setTimeout
+  var interval = setInterval(function(){
+    timerCount --;
+    console.log(timerCount);
+    countdownContainer.innerHTML = timerCount;
+    if (timerCount === 0){
+      clearInterval(interval);
+      gameStop();
+
+      return;
+    }
+  }, 1000)
+}
+
+// random index number from vocab array
+function getFromVocab(){
+  return vocabulary[Math.floor(Math.random()*vocabulary.length)];
+};
+
+// converts string from vocab array into an array, each index a letter from word
+function wordToArray(str){
+  var newWordArray = str.split('');
+// creates a span with unique id for each letter of array
+  for (var i = 0; i <newWordArray.length; i++){
+    var span = document.createElement("span");
+        span.classList.add("span");
         span.id="span"+i.toString();
-  			span.innerHTML = alphaArray[i];
-  			console.log(span);
+        span.innerHTML = newWordArray[i];
+        console.log(span);
         typeStage.appendChild(span);
 
 }
-	return alphaArray;
-}
+  return newWordArray;
+};
 
-// so far adds event listener to key of corresponding unicode
-function checkLetter (resultArray){
-	for (let i = 0; i < resultArray.length; i ++){
-	 document.addEventListener("keypress", function(event) {
-    console.log("first click");
-    console.log(i);
 
-    ///write logic above this conditional that makes the b turn gree
-    if(i>0){
-      ///inside of this conditional write logic that makes all subsequent
-      ///things turn green by checking if previous thing has turned green
-      if (event.keyCode == resultArray[i]) {
-      console.log('correct key value is' + event.keyCode);
-      var currentSpan = document.getElementById("span"+i);
-      var previousSpan = document.getElementById("span"+i-1);
-        console.log(previousSpan);
-        if(previousSpan.classList.contains("typed-span") == false){
-            console.log(currentSpan);
-            currentSpan.classList.add("typed-span")
-        }
-       } 
-    }
-    });
+
+//checks if pressed key exists inside of the current word's array, if so changes class to being highlighted, 
+//  moves on to next letter in array
+function checkKey(key){
+  if( key === alphaArray[currentSpan]){
+    keystrokeCount ++;
+    keystrokeContainer.innerHTML = keystrokeCount;
+    finishedSpan = document.getElementById("span"+currentSpan);
+    finishedSpan.classList.add("typed-span")
+    // console.log(finishedSpan);
+    currentSpan ++;
   }
-}
+  if (currentSpan === alphaArray.length){
+    console.log("word complete");
+    resetWord();
+  }
+};
 
-// test input, to be changed
-var input = 'boogie';
-var resultArray = stringToUni(input);
+// working on reset function
+function resetWord(){
+    currentSpan = 0;
+    document.getElementById("type-stage").innerHTML="";
+    alphaArray = wordToArray(getFromVocab());
+};
 
-var alphaArray = wordToArray(input);
 
-checkLetter(resultArray);
-console.log(resultArray);
 console.log(alphaArray);
-
-
-}())
 
 
 

@@ -2,6 +2,18 @@ body {
 text-align: center;
  }
 
+/* body.init * {
+ 	opacity: 0.4;
+ }
+
+ body.init #vocabOptions {
+ 	opacity: 1;
+ }
+
+ #vocabOptions {
+ 	background:red;
+ }*/
+
  span {
  	font-size:55px;
  	background-color: white;
