@@ -7,7 +7,7 @@ var countdownContainer = document.getElementById("countdown");
 var keystrokeCount = 0;
 var keystrokeContainer = document.getElementById("keystrokes");
 var vocabOptions = document.getElementById("vocabOptions");
-var timerCount = 3;
+var timerCount;
 
 vocabOptions.addEventListener("click", openGame);
 startButton.addEventListener("click", startButtonClick);
@@ -21,23 +21,26 @@ function startButtonClick(){
   alphaArray = wordToArray(getFromVocab());
 
   // adds global key stroke listeners on page load. no need for unicode conversions!
-  // if (timerCount > 0 === true){
   document.onkeypress = function(e){
     e = e || window.event;
     checkKey(e.key);
-   };
-    timerStart();
-  }
-// };
+  };
+  timerStart();
+
+};
 
 function gameStop(){
   alert("game end");
-      document.getElementById("type-stage").innerHTML="";
+  document.getElementById("type-stage").innerHTML="";
+  startButton.addEventListener("click", startButtonClick);
+  currentSpan = 0;
+  // timerCount = 5;
+
 
 }
 
 function timerStart (){
-  // var timerCount = 3;
+  timerCount = 30;
 
   //TODO: look up how to make self closing setInterval or setTimeout
   var interval = setInterval(function(){
@@ -47,7 +50,6 @@ function timerStart (){
     if (timerCount === 0){
       clearInterval(interval);
       gameStop();
-
       return;
     }
   }, 1000)
@@ -84,7 +86,7 @@ function checkKey(key){
     keystrokeContainer.innerHTML = keystrokeCount;
     finishedSpan = document.getElementById("span"+currentSpan);
     finishedSpan.classList.add("typed-span")
-    // console.log(finishedSpan);
+    console.log(finishedSpan);
     currentSpan ++;
   }
   if (currentSpan === alphaArray.length){
