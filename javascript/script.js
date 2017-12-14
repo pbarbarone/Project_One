@@ -8,9 +8,15 @@ var keystrokeCount = 0;
 var keystrokeContainer = document.getElementById("keystrokes");
 var vocabOptions = document.getElementById("vocabOptions");
 var timerCount;
+var highscoreDisplay = document.getElementById("highscore");
+
 
 vocabOptions.addEventListener("click", openGame);
 startButton.addEventListener("click", startButtonClick);
+
+if(localStorage.keyScore == undefined){
+localStorage.keyScore = 0;
+}
 
 function openGame() {
   document.getElementById('body').classList.remove('init');
@@ -19,7 +25,8 @@ function openGame() {
 function startButtonClick(){
   startButton.removeEventListener("click", startButtonClick);
   alphaArray = wordToArray(getFromVocab());
-
+  keystrokeContainer.innerHTML = "0";
+  keystrokeCount = 0;
   // adds global key stroke listeners on page load. no need for unicode conversions!
   document.onkeypress = function(e){
     e = e || window.event;
@@ -34,13 +41,14 @@ function gameStop(){
   document.getElementById("type-stage").innerHTML="";
   startButton.addEventListener("click", startButtonClick);
   currentSpan = 0;
-  // timerCount = 5;
-
-
-}
+    if(keystrokeCount > localStorage.keyScore){
+      localStorage.keyScore=keystrokeCount
+      highscoreDisplay.innerHTML=localStorage.keyScore;
+    }
+};
 
 function timerStart (){
-  timerCount = 30;
+  timerCount = 20;
 
   //TODO: look up how to make self closing setInterval or setTimeout
   var interval = setInterval(function(){
@@ -81,6 +89,9 @@ function wordToArray(str){
 //checks if pressed key exists inside of the current word's array, if so changes class to being highlighted, 
 //  moves on to next letter in array
 function checkKey(key){
+  if (timerCount === 0){
+    return; 
+  }
   if( key === alphaArray[currentSpan]){
     keystrokeCount ++;
     keystrokeContainer.innerHTML = keystrokeCount;
