@@ -1,8 +1,7 @@
  var starwarsArray = [];
  var pokemonArray = [];
- var marvelArray = [];
-// star wars vocab grabs
 
+// star wars vocab grabs
   $.get('https://swapi.co/api/people/', {
   }).done(function(response) {
   	name : 
@@ -12,6 +11,7 @@
   starwarsArray.push(response.results[i].name);
   }
 });
+  
   $.get('https://swapi.co/api/people/?page=2', {
   }).done(function(response) {
   	name : 
@@ -70,6 +70,13 @@
   		pokemonArray.push(response.results[i].name);
   	}
   });
+
+
+
+
+
+
+
 
 
 

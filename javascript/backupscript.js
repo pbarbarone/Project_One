@@ -1,6 +1,10 @@
 var typeStage = document.querySelector(".typed-words");
 
 
+startButton.addEventListener("click", function(){
+ setTimeout(startButtonClick,3000);
+});
+
 (function(){
 
 

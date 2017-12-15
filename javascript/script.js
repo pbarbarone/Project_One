@@ -16,7 +16,13 @@ highscoreDisplay.innerHTML = localStorage.keyScore;
 
 
 vocabOptions.addEventListener("click", openGame);
-startButton.addEventListener("click", startButtonClick);
+// startButton.addEventListener("click", startButtonClick);
+
+startButton.addEventListener("click", function(){
+ setTimeout(startButtonClick,3000);
+ console.log("whyyyy")
+});
+
 starwarsButton.addEventListener("click", starwarsVocab);
 pokemonButton.addEventListener("click", pokemonVocab);
 
@@ -38,7 +44,7 @@ function openGame() {
   document.getElementById('body').classList.remove('init');
 };
 
-// on button clickm, resets score display, chooses first word, disables start button
+// on button click, resets score display, chooses first word, disables start button
 function startButtonClick(){
   startButton.removeEventListener("click", startButtonClick);
   alphaArray = wordToArray(getFromVocab());
@@ -87,6 +93,7 @@ function getFromVocab(){
 // converts string from vocab array into an array, each index a letter from word
 function wordToArray(str){
   var newWordArray = str.split('');
+
 // creates a span with unique id for each letter of array
   for (var i = 0; i <newWordArray.length; i++){
     var span = document.createElement("span");
@@ -94,7 +101,6 @@ function wordToArray(str){
         span.id="span"+i.toString();
         span.innerHTML = newWordArray[i];
         typeStage.appendChild(span);
-
 }
   return newWordArray;
 };

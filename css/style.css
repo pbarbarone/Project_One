@@ -2,16 +2,24 @@ body {
 text-align: center;
  }
 
-/* body.init * {
+ body.init * {
  	opacity: 0.4;
  }
 
- body.init #vocabOptions {
+ body.init #vocabOptions{
+ 	opacity: 1;
+ }
+
+ body.init .vocab-buttons{
  	opacity: 1;
  }
 
  #vocabOptions {
  	background:red;
+ }
+
+/* .vocab-buttons {
+ 	opacity: 1;
  }*/
 
  span {
