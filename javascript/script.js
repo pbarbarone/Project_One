@@ -1,6 +1,7 @@
 var typeStage = document.getElementById("type-stage");
 var currentSpan = 0;
-var vocabulary = ["banana","boxer","beautiful","blastoff","bountiful","badger","basketball"];
+var defaultVocabulary = ["Banana","Boxer","Beautiful","blastoff","bountiful","badger","basketball"];
+var vocabulary = [];
 var startButton = document.getElementById("start-button");
 var alphaArray = "";
 var countdownContainer = document.getElementById("countdown");
@@ -9,19 +10,35 @@ var keystrokeContainer = document.getElementById("keystrokes");
 var vocabOptions = document.getElementById("vocabOptions");
 var timerCount;
 var highscoreDisplay = document.getElementById("highscore");
+var starwarsButton = document.getElementById("starwars-button");
+var pokemonButton = document.getElementById("pokemon-button");
+highscoreDisplay.innerHTML = localStorage.keyScore;
 
 
 vocabOptions.addEventListener("click", openGame);
 startButton.addEventListener("click", startButtonClick);
+starwarsButton.addEventListener("click", starwarsVocab);
+pokemonButton.addEventListener("click", pokemonVocab);
 
+// checks and sets up high score in local storage
 if(localStorage.keyScore == undefined){
 localStorage.keyScore = 0;
+}
+
+function starwarsVocab(){
+  vocabulary = [];
+  vocabulary = vocabulary.concat(starwarsArray);
+}
+function pokemonVocab(){
+  vocabulary = [];
+  vocabulary = vocabulary.concat(pokemonArray);
 }
 
 function openGame() {
   document.getElementById('body').classList.remove('init');
 };
 
+// on button clickm, resets score display, chooses first word, disables start button
 function startButtonClick(){
   startButton.removeEventListener("click", startButtonClick);
   alphaArray = wordToArray(getFromVocab());
@@ -36,6 +53,7 @@ function startButtonClick(){
 
 };
 
+// called when timer = 0. reenables start button, removes displayed word, updates highscore if beaten
 function gameStop(){
   alert("game end");
   document.getElementById("type-stage").innerHTML="";
@@ -47,13 +65,11 @@ function gameStop(){
     }
 };
 
+// timer variable. once 0, runs gamestop function
 function timerStart (){
   timerCount = 20;
-
-  //TODO: look up how to make self closing setInterval or setTimeout
   var interval = setInterval(function(){
     timerCount --;
-    console.log(timerCount);
     countdownContainer.innerHTML = timerCount;
     if (timerCount === 0){
       clearInterval(interval);
@@ -77,7 +93,6 @@ function wordToArray(str){
         span.classList.add("span");
         span.id="span"+i.toString();
         span.innerHTML = newWordArray[i];
-        console.log(span);
         typeStage.appendChild(span);
 
 }
@@ -97,16 +112,14 @@ function checkKey(key){
     keystrokeContainer.innerHTML = keystrokeCount;
     finishedSpan = document.getElementById("span"+currentSpan);
     finishedSpan.classList.add("typed-span")
-    console.log(finishedSpan);
     currentSpan ++;
   }
   if (currentSpan === alphaArray.length){
-    console.log("word complete");
     resetWord();
   }
 };
 
-// working on reset function
+//cleans up reset. resets span counter at 0, making it cleaner to start a new game 
 function resetWord(){
     currentSpan = 0;
     document.getElementById("type-stage").innerHTML="";
