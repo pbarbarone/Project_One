@@ -2,29 +2,57 @@ body {
 text-align: center;
  }
 
- body.init * {
- 	opacity: 0.4;
- }
-
- body.init #vocabOptions{
- 	opacity: 1;
- }
-
- body.init .vocab-buttons{
- 	opacity: 1;
- }
-
  #vocabOptions {
- 	background:red;
+ 	/*display: inline-block;*/
+ 	background:#3079BD;
+ 	position: relative;
+ 	bottom: 300px;
+ 	left: -35px;
+ 	height: 500px;
+ 	width: 600px;
+ 	z-index: 9;
+ 	border: 3px solid black;
+ 	border-radius: 10px;
+
+ 	/*visibility: hidden;*/
  }
 
-/* .vocab-buttons {
- 	opacity: 1;
- }*/
-
+}
  span {
  	font-size:55px;
  	background-color: white;
+ }
+
+ h2 {
+ 	font-size: 20px;
+ 	position: relative;
+ 	top: 10px;
+ }
+
+ ul {
+ 	text-align: left;
+ }
+
+ .body-container {
+ 	position : relative;
+ 	top: 58px;
+ 	display: inline-block;
+ 	border: 3px solid black;
+ 	border-radius: 20px;
+ 	height: 400px;
+ 	width: 500px;
+ }
+
+  .body-container-starwars {
+ 	position : relative;
+ 	color: yellow;
+ 	top: 58px;
+ 	display: inline-block;
+ 	border: 3px solid black;
+ 	height: 400px;
+ 	width: 500px;
+ 	border-radius: 20px;
+ 	background-image: url('../assets/star-wars-space-battle-death-star.jpg');
  }
 
  .typed-span{
@@ -38,12 +66,45 @@ text-align: center;
  	display: inline-block;
  }
 
-#current-score-wrapper {
-	display: inline-block;
-	position: relative;
+ .vocab-buttons {
+ 	position: relative;
+	margin: 20px;
+	top: 300px;
 }
 
 #keystrokes {
 	display: inline-block;
 	
 }
+
+#instructions {
+	font-size: 15px;
+}
+
+#start-button {
+	height: 50px;
+	width: 125px;
+	display: inline-block;
+	position: relative;
+	background-color: white;
+	border: 3px solid black;
+	top: 85px;
+}
+
+#highscore {
+	visibility: hidden;
+}
+
+#type-stage.typed-words {
+	position: relative;
+	top: 70px;
+	/*visibility: hidden;*/
+
+}
+
+
+
+
+
+
+

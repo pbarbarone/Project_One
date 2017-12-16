@@ -2,9 +2,19 @@
 <html>
 <head>
 	<title>Peter's Project One</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"
+  integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+  crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body id="body" class='init'>
+
+	<body id="body" class='init'>
+
+
+
+	<div class = "body-container">
 	<div><h1>Get Ready to Type</h1></div>
 
 	<div id="current-score-wrapper"> Current Score: 
@@ -13,14 +23,31 @@
 	<div id="countdown">30</div>
 	<div id="type-stage" class="typed-words"></div>
 
-	<div><button id="start-button" type="button">Start Game</button></div>
+	<!-- <div><button id="start-button" type="button">Start Game</button></div> -->
 	<div id="highscore">Highscore</div>
-	<div id="vocabOptions">
-		<button id="starwars-button" class = "vocab-buttons" type="button">Star Wars</button>
-		<button id="pokemon-button" class = "vocab-buttons" type="button">Pokemon</button>
-		<button id="starwars-button" class = "vocab-buttons" type="button">Default</button>
+	<div id = "start-button"><h2> Start Game </h2></div>
 
+		<div id="vocabOptions">
+		<p id="instructions"> Welcome to my typing game! Type through as many words as you can in 30 seconds, and try to beat the prior high score! 
+		<br>
+		You can choose between 3 word banks; Star Wars, Pokemon, or a default list of no theme words!
+		<br>
+		Punctuation and spacing counts, and with some tricky words, you might need hyphens.
+		<br>
+		Scoring goes as follows...
+		<ul>
+		<li>Gain one point for each correctly typed letter</li>
+		<li>Bonus points for each word completed depending on the length of the word</li>
+		<li>Each incorrect letter typed will subtract one point from your total</li>
+		</ul>
+		</p>
+		<button id="starwars-button" class = "vocab-buttons btn btn-warning" type="button">Star Wars</button>
+		<button id="pokemon-button" class = "vocab-buttons btn btn-warning" type="button">Pokemon</button>
+		<button id="starwars-button" class = "vocab-buttons btn btn-warning" type="button">Default</button>
 	</div>
+	</div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/script.js"></script>

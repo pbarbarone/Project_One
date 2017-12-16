@@ -20,7 +20,7 @@ vocabOptions.addEventListener("click", openGame);
 
 startButton.addEventListener("click", function(){
  setTimeout(startButtonClick,3000);
- console.log("whyyyy")
+ console.log("hello");
 });
 
 starwarsButton.addEventListener("click", starwarsVocab);
