@@ -41,8 +41,21 @@ h1{
  	border-radius: 20px;
  	height: 400px;
  	width: 500px;
- 	background-image: url('../assets/star-wars-space-battle-death-star.jpg');
+ 	/*background-image: url('../assets/star-wars-space-battle-death-star.jpg');*/
+ 	background-image: url('../assets/leather_4.jpg');
 
+ }
+
+ .body-container-pokemon {
+ 	position : relative;
+ 	top: 58px;
+ 	display: inline-block;
+ 	border: 3px solid black;
+ 	border-radius: 20px;
+ 	height: 400px;
+ 	width: 500px;
+ 	/*background-image: url('../assets/star-wars-space-battle-death-star.jpg');*/
+ 	background-image: url('../assets/pokemon-center.png');
  }
 
   .body-container-starwars {
@@ -152,6 +165,7 @@ h1{
 #type-stage.typed-words {
 	position: relative;
 	top: 20px;
+	font-size: 18px;
 	/*visibility: hidden;*/
 
 }

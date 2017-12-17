@@ -19,14 +19,12 @@ var highscoreFrontPage = document.getElementById("highscore-display-number");
 highscoreDisplay.innerHTML = localStorage.keyScore;
 highscoreFrontPage.innerHTML = localStorage.keyScore;
 
+// startButton.addEventListener("click", function(){
+//  setTimeout(startButtonClick,3000);
+//  console.log("hello");
+// });
 
-// vocabOptions.addEventListener("click", openGame);
-// startButton.addEventListener("click", startButtonClick);
-
-startButton.addEventListener("click", function(){
- setTimeout(startButtonClick,3000);
- console.log("hello");
-});
+startButton.addEventListener("click", startButtonClick);
 
 instructionsButton.addEventListener("click", infoSlideIn);
 
@@ -40,8 +38,8 @@ function infoSlideIn(){
       $('#instructions-div').removeClass("animated bounceOutLeft");
       $('#instructions-div').removeClass("animated bounceInLeft");
 
-    })
-  }
+      })
+  };
 
 function landingSlideOut(){
   $('#vocabOptions').addClass('animated bounceOutLeft');
@@ -61,6 +59,7 @@ function starwarsVocab(){
   vocabulary = vocabulary.concat(starwarsArray);
   landingSlideOut();
 }
+
 function pokemonVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(pokemonArray);
@@ -79,24 +78,23 @@ function startButtonClick(){
     checkKey(e.key);
   };
   timerStart();
-
 };
 
 // called when timer = 0. reenables start button, removes displayed word, updates highscore if beaten
 function gameStop(){
-  document.getElementById("type-stage").innerHTML="";
+  document.getElementById("type-stage").innerHTML="GAME OVER!";
   startButton.addEventListener("click", startButtonClick);
   currentSpan = 0;
+  countdownContainer.innerHTML = "XX";
     if(keystrokeCount > localStorage.keyScore){
       localStorage.keyScore=keystrokeCount
       highscoreDisplay.innerHTML=localStorage.keyScore;
-
     }
 };
 
 // timer variable. once 0, runs gamestop function
 function timerStart (){
-  timerCount = 20;
+  timerCount = 3 ;
   var interval = setInterval(function(){
     timerCount --;
     countdownContainer.innerHTML = timerCount;
@@ -106,7 +104,7 @@ function timerStart (){
       return;
     }
   }, 1000)
-}
+};
 
 // random index number from vocab array
 function getFromVocab(){
@@ -124,7 +122,7 @@ function wordToArray(str){
         span.id="span"+i.toString();
         span.innerHTML = newWordArray[i];
         typeStage.appendChild(span);
-}
+  }
   return newWordArray;
 };
 
@@ -136,6 +134,9 @@ function checkKey(key){
   if (timerCount === 0){
     return; 
   }
+  if( key !== alphaArray[currentSpan]){
+    keystrokeCount --;
+  }
   if( key === alphaArray[currentSpan]){
     keystrokeCount ++;
     keystrokeContainer.innerHTML = keystrokeCount;
@@ -144,6 +145,9 @@ function checkKey(key){
     currentSpan ++;
   }
   if (currentSpan === alphaArray.length){
+    for (var i = 0; i <= alphaArray.length; i++){
+      keystrokeCount ++;
+    }
     resetWord();
   }
 };
