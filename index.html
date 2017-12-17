@@ -7,43 +7,59 @@
   href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"
   integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
   crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Krona+One" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-	<body id="body" class='init'>
+	<body>
 
 
 
 	<div class = "body-container">
 	<div><h1>Get Ready to Type</h1></div>
 
+	<div id= "active-score-wrapper">
 	<div id="current-score-wrapper"> Current Score: 
 		<div id="keystrokes">00</div>
+	</div>
+	<div id="high-score-wrapper">Highscore:
+	<div id="highscore">Highscore</div>
+	</div>
 	</div>
 	<div id="countdown">30</div>
 	<div id="type-stage" class="typed-words"></div>
 
 	<!-- <div><button id="start-button" type="button">Start Game</button></div> -->
-	<div id="highscore">Highscore</div>
-	<div id = "start-button"><h2> Start Game </h2></div>
+	<div id ="start-button"><h2> Start Game </h2></div>
 
-		<div id="vocabOptions">
-		<p id="instructions"> Welcome to my typing game! Type through as many words as you can in 30 seconds, and try to beat the prior high score! 
+
+
+	<div id="vocabOptions">
+		<h1 class="landing-text" id="landing-title">Type Game</h1>
+		<h2 class="landing-text" id=>A project by Peter not Pete</h2>
+			<div class="landing-box-score">
+				<p id="highscore-box-text">Highscore</p>
+				<p id="highscore-display-number">000</p>
+			</div>
+		<button id="instructions-button" class="btn btn-warning">Instructions</button>
+		<button id="starwars-button" class = "vocab-buttons btn btn-warning" type="button">Star Wars</button>
+		<button id="pokemon-button" class = "vocab-buttons btn btn-warning" type="button">Pokemon</button>
+		<button id="starwars-button" class = "vocab-buttons btn btn-warning" type="button">Default</button>
+	</div>
+	<div id="instructions-div">
+		<p id="instructions">   Welcome to my typing game! Type through as many words as you can in 30 seconds, and try to beat the prior high score! 
 		<br>
-		You can choose between 3 word banks; Star Wars, Pokemon, or a default list of no theme words!
+		  You can choose between 3 word banks; Star Wars, Pokemon, or a default list of no theme words!
 		<br>
-		Punctuation and spacing counts, and with some tricky words, you might need hyphens.
+		  Punctuation and spacing counts, and with some tricky words, you might need hyphens.
 		<br>
 		Scoring goes as follows...
-		<ul>
+		<ul>Scoring goes as follows...
 		<li>Gain one point for each correctly typed letter</li>
 		<li>Bonus points for each word completed depending on the length of the word</li>
 		<li>Each incorrect letter typed will subtract one point from your total</li>
 		</ul>
 		</p>
-		<button id="starwars-button" class = "vocab-buttons btn btn-warning" type="button">Star Wars</button>
-		<button id="pokemon-button" class = "vocab-buttons btn btn-warning" type="button">Pokemon</button>
-		<button id="starwars-button" class = "vocab-buttons btn btn-warning" type="button">Default</button>
 	</div>
 	</div>
 

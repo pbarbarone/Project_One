@@ -12,16 +12,41 @@ var timerCount;
 var highscoreDisplay = document.getElementById("highscore");
 var starwarsButton = document.getElementById("starwars-button");
 var pokemonButton = document.getElementById("pokemon-button");
+var instructionsButton = document.getElementById("instructions-button");
+var instructionsBox = document.getElementById("instructions-div");
+var highscoreFrontPage = document.getElementById("highscore-display-number");
+
 highscoreDisplay.innerHTML = localStorage.keyScore;
+highscoreFrontPage.innerHTML = localStorage.keyScore;
 
 
-vocabOptions.addEventListener("click", openGame);
+// vocabOptions.addEventListener("click", openGame);
 // startButton.addEventListener("click", startButtonClick);
 
 startButton.addEventListener("click", function(){
  setTimeout(startButtonClick,3000);
  console.log("hello");
 });
+
+instructionsButton.addEventListener("click", infoSlideIn);
+
+function infoSlideIn(){
+    instructionsBox.style.visibility = "visible";
+    $('#instructions-div').addClass('animated bounceInLeft');
+    instructionsBox.addEventListener("click", function(){
+      $('#instructions-div').addClass('animated bounceOutLeft');
+      instructionsButton.addEventListener("click", infoSlideIn);
+      instructionsBox.style.visibility = "hidden";
+      $('#instructions-div').removeClass("animated bounceOutLeft");
+      $('#instructions-div').removeClass("animated bounceInLeft");
+
+    })
+  }
+
+function landingSlideOut(){
+  $('#vocabOptions').addClass('animated bounceOutLeft');
+}
+
 
 starwarsButton.addEventListener("click", starwarsVocab);
 pokemonButton.addEventListener("click", pokemonVocab);
@@ -34,15 +59,13 @@ localStorage.keyScore = 0;
 function starwarsVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(starwarsArray);
+  landingSlideOut();
 }
 function pokemonVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(pokemonArray);
+  landingSlideOut();
 }
-
-function openGame() {
-  document.getElementById('body').classList.remove('init');
-};
 
 // on button click, resets score display, chooses first word, disables start button
 function startButtonClick(){
@@ -61,13 +84,13 @@ function startButtonClick(){
 
 // called when timer = 0. reenables start button, removes displayed word, updates highscore if beaten
 function gameStop(){
-  alert("game end");
   document.getElementById("type-stage").innerHTML="";
   startButton.addEventListener("click", startButtonClick);
   currentSpan = 0;
     if(keystrokeCount > localStorage.keyScore){
       localStorage.keyScore=keystrokeCount
       highscoreDisplay.innerHTML=localStorage.keyScore;
+
     }
 };
 

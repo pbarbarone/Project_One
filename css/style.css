@@ -1,36 +1,36 @@
 body { 
 text-align: center;
- }
+overflow: hidden;
+font-family: 'Krona One', sans-serif; }
 
- #vocabOptions {
- 	/*display: inline-block;*/
- 	background:#3079BD;
- 	position: relative;
- 	bottom: 300px;
- 	left: -35px;
- 	height: 500px;
- 	width: 600px;
- 	z-index: 9;
- 	border: 3px solid black;
- 	border-radius: 10px;
-
- 	/*visibility: hidden;*/
- }
-
-}
- span {
- 	font-size:55px;
+span {
+ 	font-size:30px;
  	background-color: white;
+ 	position: relative;
+ 	top: 20px;
  }
-
+h1{
+	color: #FFC107;
+}
  h2 {
  	font-size: 20px;
  	position: relative;
  	top: 10px;
+ 	color: #FFC107;
  }
 
  ul {
  	text-align: left;
+ 	font-size: 15px;
+ 	position: relative;
+ 	left: 10px;
+ 	top: 50px;
+ 	background: white;
+ 	width:575px;
+ 	height: 180px;
+ 	opacity: .8;
+ 	border: 2px solid black;
+ 	border-radius: 8px;
  }
 
  .body-container {
@@ -41,6 +41,8 @@ text-align: center;
  	border-radius: 20px;
  	height: 400px;
  	width: 500px;
+ 	background-image: url('../assets/star-wars-space-battle-death-star.jpg');
+
  }
 
   .body-container-starwars {
@@ -56,22 +58,60 @@ text-align: center;
  }
 
  .typed-span{
- 	background-color: green;
+ 	background-color: #ffc107;
  }
 
  .typed-words {
  	height: 85px;
  	width: 400px;
- 	background: olive;
+ 	background: white;
  	display: inline-block;
+ 	border : 2px solid black;
+ 	border-radius: 8px;
+ 	opacity: .8;
+ 	font-size: 18px; 
+
  }
 
  .vocab-buttons {
  	position: relative;
-	margin: 20px;
-	top: 300px;
+	margin: 6px;
+	top: 180px;
+	right: 85px;
 }
 
+.landing-text {
+	position: relative;
+	top: 65px;
+}
+
+.landing-box-score{
+	height:90px;
+	width:90px;
+	position: relative;
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 5px;
+	left: 250px;
+	top: 115px;
+}
+
+#highscore-box-text{
+	text-align: bottom;
+	font-size: 11px;
+}
+
+#instructions-button{
+	position: relative;
+	top: 115px;
+	left:203px;
+}
+
+#highscore-display-number{
+	font-size: 30px;
+	position: relative;
+	bottom: 15px;
+}
 #keystrokes {
 	display: inline-block;
 	
@@ -79,28 +119,97 @@ text-align: center;
 
 #instructions {
 	font-size: 15px;
+	text-align: left;
+	margin-left: 50px;
+	position: relative;
+	top: 30px;
+	right: 42px;
+	background: white;
+	width:575px;
+	border: 2px solid black;
+	border-radius: 8px;
+	opacity: .8;
 }
 
 #start-button {
+	font-size: 15px;
 	height: 50px;
-	width: 125px;
+	width: 175px;
 	display: inline-block;
 	position: relative;
 	background-color: white;
-	border: 3px solid black;
-	top: 85px;
+	border: 2px solid black;
+	border-radius: 8px;
+	top: 20px;
+	opacity: .8;
 }
 
 #highscore {
-	visibility: hidden;
+	position: relative;
+	display: inline-block;
 }
 
 #type-stage.typed-words {
 	position: relative;
-	top: 70px;
+	top: 20px;
 	/*visibility: hidden;*/
 
 }
+
+#instructions-div {
+ 	background:#3079BD;
+ 	position: relative;
+ 	bottom: 840px;
+ 	left: -55px;
+ 	height: 500px;
+ 	width: 600px;
+ 	z-index: 11;
+ 	border: 3px solid black;
+ 	border-radius: 10px;
+
+ 	visibility: hidden;
+}
+
+ #vocabOptions {
+ 	/*display: inline-block;*/
+ 	background:#3079BD;
+ 	position: relative;
+ 	bottom: 340px;
+ 	left: -55px;
+ 	height: 500px;
+ 	width: 600px;
+ 	z-index: 9;
+ 	border: 3px solid black;
+ 	border-radius: 10px;
+
+ 	/*visibility: hidden;*/
+ }
+
+#countdown {
+	position:relative;
+	top: 10px;
+	font-size: 50px;
+	background-color: white;
+	width:85px;
+	left: 205px;
+	border-radius: 8px;
+	opacity: .8;
+}
+
+#active-score-wrapper {
+	position: relative;
+	width: 150px;
+	background: white;
+	left: 172px;
+	opacity: .8;
+	border-radius: 8px;
+	font-size: 12px;
+}
+
+
+
+
+
 
 
 
