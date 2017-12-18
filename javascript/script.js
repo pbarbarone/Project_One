@@ -25,6 +25,7 @@ highscoreFrontPage.innerHTML = localStorage.keyScore;
 // checks and sets up high score in local storage
 if(localStorage.keyScore == undefined){
 localStorage.keyScore = 0;
+highscoreFrontPage.innerHTML="00"
 }
 
 // adds event listeners to 3 non vocab buttons
