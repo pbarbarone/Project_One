@@ -60,7 +60,6 @@ h1{
 
   .body-container-starwars {
  	position : relative;
- 	color: yellow;
  	top: 58px;
  	display: inline-block;
  	border: 3px solid black;
@@ -145,6 +144,19 @@ h1{
 }
 
 #start-button {
+	font-size: 15px;
+	height: 50px;
+	width: 175px;
+	display: inline-block;
+	position: relative;
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 8px;
+	top: 20px;
+	opacity: .8;
+}
+
+#new-game-button {
 	font-size: 15px;
 	height: 50px;
 	width: 175px;

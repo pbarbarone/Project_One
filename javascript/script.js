@@ -3,6 +3,7 @@ var currentSpan = 0;
 var defaultVocabulary = ["Banana","Boxer","Beautiful","blastoff","bountiful","badger","basketball"];
 var vocabulary = [];
 var startButton = document.getElementById("start-button");
+var newVocab = document.getElementById("new-game-button");
 var alphaArray = "";
 var countdownContainer = document.getElementById("countdown");
 var keystrokeCount = 0;
@@ -12,62 +13,76 @@ var timerCount;
 var highscoreDisplay = document.getElementById("highscore");
 var starwarsButton = document.getElementById("starwars-button");
 var pokemonButton = document.getElementById("pokemon-button");
+var defaultButton = document.getElementById("default-button");
 var instructionsButton = document.getElementById("instructions-button");
 var instructionsBox = document.getElementById("instructions-div");
 var highscoreFrontPage = document.getElementById("highscore-display-number");
+var gameContainer = document.querySelector(".body-container");
 
+// highscore display update
 highscoreDisplay.innerHTML = localStorage.keyScore;
 highscoreFrontPage.innerHTML = localStorage.keyScore;
-
-// startButton.addEventListener("click", function(){
-//  setTimeout(startButtonClick,3000);
-//  console.log("hello");
-// });
-
-startButton.addEventListener("click", startButtonClick);
-
-instructionsButton.addEventListener("click", infoSlideIn);
-
-function infoSlideIn(){
-    instructionsBox.style.visibility = "visible";
-    $('#instructions-div').addClass('animated bounceInLeft');
-    instructionsBox.addEventListener("click", function(){
-      $('#instructions-div').addClass('animated bounceOutLeft');
-      instructionsButton.addEventListener("click", infoSlideIn);
-      instructionsBox.style.visibility = "hidden";
-      $('#instructions-div').removeClass("animated bounceOutLeft");
-      $('#instructions-div').removeClass("animated bounceInLeft");
-
-      })
-  };
-
-function landingSlideOut(){
-  $('#vocabOptions').addClass('animated bounceOutLeft');
-}
-
-
-starwarsButton.addEventListener("click", starwarsVocab);
-pokemonButton.addEventListener("click", pokemonVocab);
-
 // checks and sets up high score in local storage
 if(localStorage.keyScore == undefined){
 localStorage.keyScore = 0;
 }
 
+// adds event listeners to 3 non vocab buttons
+startButton.addEventListener("click", startButtonClick);
+newVocab.addEventListener("click", landingSlideIn);
+instructionsButton.addEventListener("click", infoSlideIn);
+
+// repeatable display toggle for instructions page over landing page
+function infoSlideIn(){
+  instructionsBox.style.visibility = "visible";
+  $('#instructions-div').addClass('animated bounceInLeft');
+  instructionsBox.addEventListener("click", function(){
+    $('#instructions-div').addClass('animated bounceOutLeft');
+    instructionsButton.addEventListener("click", infoSlideIn);
+    instructionsBox.style.visibility = "hidden";
+    $('#instructions-div').removeClass("animated bounceOutLeft");
+    $('#instructions-div').removeClass("animated bounceInLeft");
+  })
+};
+
+// repeatable display toggle for choosing vocab to game stage and back
+function landingSlideOut(){
+  $('#vocabOptions').addClass('animated bounceOutLeft');
+}
+function landingSlideIn(){
+  $('#vocabOptions').removeClass('animated bounceOutLeft');
+  $('#vocabOptions').addClass('animated bounceInLeft');
+}
+
+// adds listeners to 3 vocab options on landing page
+starwarsButton.addEventListener("click", starwarsVocab);
+pokemonButton.addEventListener("click", pokemonVocab);
+defaultButton.addEventListener("click", defaultVocab);
+
+// each vocab buttons logic to change background and wordbank for given option
 function starwarsVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(starwarsArray);
+  gameContainer.classList.remove("body-container");
+  gameContainer.classList.add("body-container-starwars");
   landingSlideOut();
-}
-
+};
 function pokemonVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(pokemonArray);
+  gameContainer.classList.remove("body-container");
+  gameContainer.classList.add("body-container-pokemon");
   landingSlideOut();
-}
+};
+function defaultVocab(){
+  vocabulary = [];
+  vocabulary = vocabulary.concat(defaultArray);
+  landingSlideOut();
+};
 
 // on button click, resets score display, chooses first word, disables start button
 function startButtonClick(){
+  document.getElementById("type-stage").innerHTML="";
   startButton.removeEventListener("click", startButtonClick);
   alphaArray = wordToArray(getFromVocab());
   keystrokeContainer.innerHTML = "0";
@@ -114,7 +129,6 @@ function getFromVocab(){
 // converts string from vocab array into an array, each index a letter from word
 function wordToArray(str){
   var newWordArray = str.split('');
-
 // creates a span with unique id for each letter of array
   for (var i = 0; i <newWordArray.length; i++){
     var span = document.createElement("span");
@@ -125,8 +139,6 @@ function wordToArray(str){
   }
   return newWordArray;
 };
-
-
 
 //checks if pressed key exists inside of the current word's array, if so changes class to being highlighted, 
 //  moves on to next letter in array
@@ -158,9 +170,4 @@ function resetWord(){
     document.getElementById("type-stage").innerHTML="";
     alphaArray = wordToArray(getFromVocab());
 };
-
-
-console.log(alphaArray);
-
-
 
