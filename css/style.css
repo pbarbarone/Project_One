@@ -1,17 +1,20 @@
 body { 
-text-align: center;
-overflow: hidden;
-font-family: 'Krona One', sans-serif; }
+	text-align: center;
+	overflow: hidden;
+	font-family: 'Krona One', sans-serif;
+	background: url("../assets/background-dark-brown-wood.png"); }
 
 span {
  	font-size:30px;
  	background-color: white;
  	position: relative;
  	top: 20px;
- }
+}
+
 h1{
 	color: #FFC107;
 }
+
  h2 {
  	font-size: 20px;
  	position: relative;
@@ -41,9 +44,7 @@ h1{
  	border-radius: 20px;
  	height: 400px;
  	width: 500px;
- 	/*background-image: url('../assets/star-wars-space-battle-death-star.jpg');*/
  	background-image: url('../assets/leather_4.jpg');
-
  }
 
  .body-container-pokemon {
@@ -54,7 +55,6 @@ h1{
  	border-radius: 20px;
  	height: 400px;
  	width: 500px;
- 	/*background-image: url('../assets/star-wars-space-battle-death-star.jpg');*/
  	background-image: url('../assets/pokemon-center.png');
  }
 
@@ -124,9 +124,9 @@ h1{
 	position: relative;
 	bottom: 15px;
 }
+
 #keystrokes {
-	display: inline-block;
-	
+	display: inline-block;	
 }
 
 #instructions {
@@ -178,12 +178,10 @@ h1{
 	position: relative;
 	top: 20px;
 	font-size: 18px;
-	/*visibility: hidden;*/
-
 }
 
 #instructions-div {
- 	background:#3079BD;
+ 	background:#455565;
  	position: relative;
  	bottom: 840px;
  	left: -55px;
@@ -192,13 +190,11 @@ h1{
  	z-index: 11;
  	border: 3px solid black;
  	border-radius: 10px;
-
  	visibility: hidden;
 }
 
- #vocabOptions {
- 	/*display: inline-block;*/
- 	background:#3079BD;
+#vocabOptions {
+ 	background:#455565;
  	position: relative;
  	bottom: 340px;
  	left: -55px;
@@ -207,9 +203,7 @@ h1{
  	z-index: 9;
  	border: 3px solid black;
  	border-radius: 10px;
-
- 	/*visibility: hidden;*/
- }
+}
 
 #countdown {
 	position:relative;
@@ -231,15 +225,4 @@ h1{
 	border-radius: 8px;
 	font-size: 12px;
 }
-
-
-
-
-
-
-
-
-
-
-
 

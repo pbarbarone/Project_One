@@ -64,6 +64,7 @@ function starwarsVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(starwarsArray);
   gameContainer.classList.remove("body-container");
+  gameContainer.classList.remove("body-container-pokemon");
   gameContainer.classList.add("body-container-starwars");
   landingSlideOut();
 };
@@ -71,12 +72,16 @@ function pokemonVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(pokemonArray);
   gameContainer.classList.remove("body-container");
+  gameContainer.classList.remove("body-container-starwars");
   gameContainer.classList.add("body-container-pokemon");
   landingSlideOut();
 };
 function defaultVocab(){
   vocabulary = [];
   vocabulary = vocabulary.concat(defaultArray);
+  gameContainer.classList.add("body-container");
+  gameContainer.classList.remove("body-container-pokemon");
+  gameContainer.classList.remove("body-container-starwars");
   landingSlideOut();
 };
 
@@ -109,7 +114,7 @@ function gameStop(){
 
 // timer variable. once 0, runs gamestop function
 function timerStart (){
-  timerCount = 3 ;
+  timerCount = 30;
   var interval = setInterval(function(){
     timerCount --;
     countdownContainer.innerHTML = timerCount;
